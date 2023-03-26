@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editar pedido</title>
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav class="navbar">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{inicio}"> <img
+				src="/imagenes/Logo.png" alt="Logo" width="100" height="100">
+			</a> <a class="navbar-brand fs-2 text-light " th:href="@{inicio}">Restaurante
+				Machetico Tia Niña</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+				aria-controls="offcanvasNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Restaurante</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{inicio}">Inicio</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">Cruds</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" th:href="@{/allRol}">Roles</a></li>
+								<li><a class="dropdown-item" th:href="@{/usuario}">Usuarios</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" th:href="@{/allPro}">Produccion</a></li>
+								<li><a class="dropdown-item" th:href="@{/allPedi}">Pedidos</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" th:href="@{/allInsu}">Insumos</a></li>
+								<li><a class="dropdown-item" th:href="@{/allEnt}">Entradas</a></li>
+								<li><a class="dropdown-item" th:href="@{/allEmpre}">Empresas
+										Proveedoras</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">Enviar
+								correos</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" th:href="@{/mapCorreo}">Enviar
+										correo simple</a></li>
+								<li><a class="dropdown-item"
+									th:href="@{/mapMailWithAttachment}">Enviar correo complejo</a></li>
+							</ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container-sm tabla w-25 p-3 text-center">
+		<form th:action="@{/savePedi}" th:object="${ped}" method="POST">
+			<input th:field="*{idpedido}" type="hidden" class="form-control"
+				required>
+			<div class="mb-3">
+				<label class="form-label w-75">Telefono</label> <input
+					th:field="*{telefono}" type="text" class="form-control" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label w-75">Sugerencia</label> <input
+					th:field="*{sugerencia}" type="text" class="form-control" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label w-75">Direccion</label> <input
+					th:field="*{direccion}" type="text" class="form-control" required>
+			</div>
+			<div class="mb-3">
+				<label class="form-label w-75">Precio Final</label> <input
+					th:field="*{precio_final}" type="text" class="form-control"
+					required>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label w-75">Usuario</label> <select
+					th:field="*{usuario}" class="form-select">
+					<option th:each="uL:${usua}" th:value="${uL.idusuario}"
+						th:text="${uL.nombre_com}"></option>
+				</select>
+			</div>
+
+			<div class="mb-3">
+				<button class="btn btn-danger" type="submit">Guardar</button>
+			</div>
+
+		</form>
+	</div>
+
+	<script th:src="@{/jquery/jquery.js}" type="text/javascript"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

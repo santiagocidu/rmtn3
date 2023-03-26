@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Inicio de Sesion</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/estiloAdmin.css}">
+<script src="https://kit.fontawesome.com/7a315568f4.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+</head>
+<body class="bg-login">
+
+	<nav class="navbar">
+		<div class="navbar-container container1">
+			<input type="checkbox" name="" id="">
+			<div class="hamburger-lines">
+				<span class="line line1"></span> <span class="line line2"></span> <span
+					class="line line3"></span>
+			</div>
+			<ul class="menu-items">
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/">Sobre nosotros</a></li>
+				<li><a href="/">Menú</a></li>
+				<li><a href="/">Contactenos</a></li>
+				<li><a th:href="@{/login}">Inicia sesion</a></li>
+			</ul>
+			<h1 class="logo">RMTN</h1>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="">
+		<div class="row justify-content-center">
+			<div class="col-lg-5 mt-5">
+				<div class="card shadow-lg rounded-lg mt-5">
+					<div class="card-header text-bg-danger">
+						<h3 class="text-center font-weight-light my-4">Registrate</h3>
+					</div>
+					<div class="card-body">
+
+						<div th:if=${param.exito}>
+							<div class="alert alert-info">Se ha registrado exitosamente</div>
+						</div>
+						
+						<form th:action="@{/registro}" method="post"
+							th:object="${usuario}">
+
+							<div class="form-floating mb-3">
+								<input id="nombre_com" type="text" class="form-control"
+									th:field=*{nombre_com} required autofocus="autofocus"
+									placeholder="Ingresa tu nombre"> <label>Ingresa
+									tu nombre</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<input id="correo" type="email" class="form-control"
+									th:field=*{correo} required autofocus="autofocus"
+									placeholder="Ingresa tu correo electronico"> <label>Ingresa
+									tu correo electronico</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<input type="password" id="password" class="form-control"
+									th:field=*{password} required autofocus="autofocus"
+									placeholder="Ingresa tu contraseña"> <label>Ingresta
+									tu contraseña</label>
+							</div>
+
+							<div class="form-group">
+								<span>Si ya tienes una cuenta <a class="text-danger"
+									th:href="@{/login}">Inicia sesion aqui</a></span>
+							</div>
+
+							<div class="mt-4 mb-0">
+								<div class="d-grid">
+									<button class="btn btn-danger" type="submit">Aceptar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/admin.js}"></script>
+	<script th:src="@{/js/datatable.js}"></script>
+	<script th:src="@{/js/datatables.js}"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Inicio</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script src="https://kit.fontawesome.com/7a315568f4.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="navbar-container container1">
+			<input type="checkbox" name="" id="">
+			<div class="hamburger-lines">
+				<span class="line line1"></span> <span class="line line2"></span> <span
+					class="line line3"></span>
+			</div>
+			<ul class="menu-items">
+				<li><a href="#home">Inicio</a></li>
+				<li><a href="#about">Sobre nosotros</a></li>
+				<li><a href="#food-menu">Menú</a></li>
+				<li><a href="#contact">Contactenos</a></li>
+				<li><a th:href="@{login}">Iniciar sesión</a></li>
+			</ul>
+			<h1 class="logo">RMTN</h1>
+		</div>
+	</nav>
+
+	<section class="showcase-area" id="showcase">
+		<div class="showcase-container">
+			<h1 class="main-title" id="home">Restaurante Machetico Tia Niña</h1>
+			<p>La mejor sazón de Colombia.</p>
+			<a href="#food-menu" class="btn1 btn-primary1">Menú</a>
+		</div>
+	</section>
+
+	<section id="about">
+		<div class="about-wrapper container1">
+			<div class="about-text">
+				<p class="small">Sobre nosotros</p>
+				<h2>Llevamos haciendo comida por los ultimos 10 años</h2>
+				<p>Somos un establecimiento único que se especializa en brindar
+					una experiencia culinaria excepcional a nuestros clientes. Nuestro
+					menú ofrece una amplia variedad de opciones para satisfacer todos
+					los gustos y preferencias. Además, utilizamos ingredientes frescos
+					y de alta calidad en todas nuestras preparaciones para garantizar
+					que cada bocado sea una explosión de sabor.</p>
+			</div>
+			<div class="about-img">
+				<img class="imagen" th:src="@{/imagenes/camarones.jpg}" alt="food" />
+			</div>
+		</div>
+	</section>
+	
+
+
+
+
+	<section id="food-menu">
+		<h2 class="food-menu-heading">Menú</h2>
+		<div class="food-menu-container container1">
+
+
+			<div th:each="p: ${listPlatos}" class="food-menu-item">
+				<div class="food-img">
+					<img th:if="${p.image}" th:src="@{'uploads/' + ${p.image}}"
+						alt="Plato" />
+				</div>
+				<div class="food-description">
+					<h2 class="food-titile" th:text="${p.nombre}"></h2>
+					<p th:text="${p.descripcion}"></p>
+					<p th:text="${p.precio}" class="food-price"></p>
+				</div>
+			</div>
+
+
+		</div>
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="about-wrapper container1">
+			<div class="about-text">
+				<p class="small">Contactenos</p>
+				<h2>Visita nuestras redes sociales</h2>
+				<p>
+					¡Bienvenido/a a las redes sociales de nuestro restaurante! Aquí
+					encontrarás información sobre nuestro menú, nuestras promociones y
+					eventos especiales, así como fotos y videos de nuestros platos y
+					ambiente. Esperamos que te den ganas de visitarnos y probar
+					nuestros deliciosos platillos. <br> <br> <a
+						class="instagram"
+						href="https://www.instagram.com/macheticotianina/"><i
+						class="fa-brands fa-instagram"> Instagram</i></a>
+				</p>
+			</div>
+			<div class="about-img">
+				<iframe class="imagen" title="Mapa"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d612.7253705578605!2d-74.100521184128!3d4.811910643061073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f871d74cffced%3A0x4fb4a65e003428a9!2sEl%20Machetico%20Cota!5e0!3m2!1ses-419!2sco!4v1677287840314!5m2!1ses-419!2sco"
+					width="600" height="400" style="border: 0;" allowfullscreen=""
+					loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+	</section>
+	<footer id="footer">
+		<h2>Restaurante Machetico Tia Niña &copy; Todos los derechos
+			reservados</h2>
+	</footer>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous">
+		
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+		integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+		crossorigin="anonymous">
+		
+	</script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/inicio.js}"></script>
+
+</body>
+
+</html>
